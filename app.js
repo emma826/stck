@@ -12,7 +12,7 @@ app.get("/", (req, res) => {
 })
 app.get("/:url", (req, res) => {
     const url = req.params.url
-    res.render(req.params.url)
+    res.render(url)
 })
 
-app.listen(port, () => console.log(`http:127.0.
+app.listen(port, () => console.log(`http:127.0.0.1:${port}`))

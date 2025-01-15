@@ -36,10 +36,10 @@
 
     <%- include("./includes/sidebar.ejs") %>
         <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-            <%- include("./includes/navbar.ejs") %>
-
-                <div class="container-fluid pt-3 pb-2">
-
+            <!-- Navbar -->
+            <%- include("./includes/navbar") %>
+                <!-- End Navbar -->
+                <div class="container-fluid py-2">
                     <div class="row">
                         <div class="ms-3">
                             <h3 class="mb-0 h4 font-weight-bolder">Dashboard</h3>
@@ -50,8 +50,185 @@
                                 <div class="card-header p-2 ps-3">
                                     <div class="d-flex justify-content-between">
                                         <div>
-                                            <p class="text-sm mb-0 text-capitalize">Today's Users</p>
+                                            <p class="text-sm mb-0 text-capitalize">Stocks Added</p>
                                             <h4 class="mb-0">2300</h4>
                                         </div>
                                         <div
-                                            class="icon icon-md icon-shape bg-gradient-dark shadow-d
+                                            class="icon icon-md icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-lg">
+                                            <i class="material-symbols-rounded opacity-10">person</i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="dark horizontal my-0">
+                                <div class="card-footer p-2 ps-3">
+                                    <p class="mb-0 text-sm"><span class="text-success font-weight-bolder">+3%
+                                        </span>than last month</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+                            <div class="card">
+                                <div class="card-header p-2 ps-3">
+                                    <div class="d-flex justify-content-between">
+                                        <div>
+                                            <p class="text-sm mb-0 text-capitalize">Ads Views</p>
+                                            <h4 class="mb-0">3,462</h4>
+                                        </div>
+                                        <div
+                                            class="icon icon-md icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-lg">
+                                            <i class="material-symbols-rounded opacity-10">leaderboard</i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="dark horizontal my-0">
+                                <div class="card-footer p-2 ps-3">
+                                    <p class="mb-0 text-sm"><span class="text-danger font-weight-bolder">-2% </span>than
+                                        yesterday</p>
+                                </div>
+                            </div>
+                        </div> -->
+                        <div class="col-xl-3 col-sm-6">
+                            <div class="card">
+                                <div class="card-header p-2 ps-3">
+                                    <div class="d-flex justify-content-between">
+                                        <div>
+                                            <p class="text-sm mb-0 text-capitalize">Sales</p>
+                                            <h4 class="mb-0">$103,430</h4>
+                                        </div>
+                                        <div
+                                            class="icon icon-md icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-lg">
+                                            <i class="material-symbols-rounded opacity-10">weekend</i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="dark horizontal my-0">
+                                <div class="card-footer p-2 ps-3">
+                                    <p class="mb-0 text-sm"><span class="text-success font-weight-bolder">+5%
+                                        </span>than last month</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mt-4 mb-4">
+                            <div class="card ">
+                                <div class="card-body">
+                                    <h6 class="mb-0 "> Daily Sales </h6>
+                                    <p class="text-sm "> (<span class="font-weight-bolder">+15%</span>) increase in
+                                        today sales. </p>
+                                    <div class="pe-2">
+                                        <div class="chart">
+                                            <canvas id="chart-line" class="chart-canvas" height="350"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-header pb-0">
+                                    <h6>Orders overview</h6>
+                                    <p class="text-sm">
+                                        <i class="fa fa-arrow-up text-success" aria-hidden="true"></i>
+                                        <span class="font-weight-bold">24%</span> this month
+                                    </p>
+                                </div>
+                                <div class="card-body p-3">
+                                    <div class="timeline timeline-one-side">
+                                        <div class="timeline-block mb-3">
+                                            <span class="timeline-step">
+                                                <i
+                                                    class="material-symbols-rounded text-success text-gradient">notifications</i>
+                                            </span>
+                                            <div class="timeline-content">
+                                                <h6 class="text-dark text-sm font-weight-bold mb-0">$2400, Design
+                                                    changes</h6>
+                                                <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">22 DEC 7:20
+                                                    PM</p>
+                                            </div>
+                                        </div>
+                                        <div class="timeline-block mb-3">
+                                            <span class="timeline-step">
+                                                <i class="material-symbols-rounded text-danger text-gradient">code</i>
+                                            </span>
+                                            <div class="timeline-content">
+                                                <h6 class="text-dark text-sm font-weight-bold mb-0">New order #1832412
+                                                </h6>
+                                                <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">21 DEC 11
+                                                    PM</p>
+                                            </div>
+                                        </div>
+                                        <div class="timeline-block mb-3">
+                                            <span class="timeline-step">
+                                                <i
+                                                    class="material-symbols-rounded text-info text-gradient">shopping_cart</i>
+                                            </span>
+                                            <div class="timeline-content">
+                                                <h6 class="text-dark text-sm font-weight-bold mb-0">Server payments for
+                                                    April</h6>
+                                                <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">21 DEC 9:34
+                                                    PM</p>
+                                            </div>
+                                        </div>
+                                        <div class="timeline-block mb-3">
+                                            <span class="timeline-step">
+                                                <i
+                                                    class="material-symbols-rounded text-warning text-gradient">credit_card</i>
+                                            </span>
+                                            <div class="timeline-content">
+                                                <h6 class="text-dark text-sm font-weight-bold mb-0">New card added for
+                                                    order #4395133</h6>
+                                                <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">20 DEC 2:20
+                                                    AM</p>
+                                            </div>
+                                        </div>
+                                        <div class="timeline-block mb-3">
+                                            <span class="timeline-step">
+                                                <i class="material-symbols-rounded text-primary text-gradient">key</i>
+                                            </span>
+                                            <div class="timeline-content">
+                                                <h6 class="text-dark text-sm font-weight-bold mb-0">Unlock packages for
+                                                    development</h6>
+                                                <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">18 DEC 4:54
+                                                    AM</p>
+                                            </div>
+                                        </div>
+                                        <div class="timeline-block">
+                                            <span class="timeline-step">
+                                                <i class="material-symbols-rounded text-dark text-gradient">payments</i>
+                                            </span>
+                                            <div class="timeline-content">
+                                                <h6 class="text-dark text-sm font-weight-bold mb-0">New order #9583120
+                                                </h6>
+                                                <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">17 DEC</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </main>
+        <!--   Core JS Files   -->
+        <script src="/js/core/popper.min.js"></script>
+        <script src="/js/core/bootstrap.min.js"></script>
+        <script src="/js/plugins/perfect-scrollbar.min.js"></script>
+        <script src="/js/plugins/smooth-scrollbar.min.js"></script>
+
+
+        <script>
+            var win = navigator.platform.indexOf('Win') > -1;
+            if (win && document.querySelector('#sidenav-scrollbar')) {
+                var options = {
+                    damping: '0.5'
+                }
+                Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+            }
+        </script>
+
+        <script src="/js/material-dashboard.mine63c.js?v=3.1.0"></script>
+</body>
+
+</html>
