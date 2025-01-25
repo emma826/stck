@@ -22,6 +22,7 @@ register_button.addEventListener("click", async () => {
                 error.style.display = "none"
 
                 success.innerHTML = "Registration successful"
+                window.location = "/"
             }
             else{
                 error.style.display = "block"

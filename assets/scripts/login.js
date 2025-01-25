@@ -7,7 +7,7 @@ register_button.addEventListener("click", async () => {
     const password = document.getElementById("password").value
 
 
-    await fetch('/auth/register', {
+    await fetch('/auth/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -21,6 +21,7 @@ register_button.addEventListener("click", async () => {
                 error.style.display = "none"
 
                 success.innerHTML = "Registration successful"
+                window.location = "/"
             }
             else{
                 error.style.display = "block"
