@@ -1,30 +1,44 @@
 const mongoose = require("mongoose")
 
-const stock_schema = mongoose.schema({
-    name: {
+const stockSchema = mongoose.Schema({
+    user_id: {
         type: String,
         required: true
     },
-    sku_number: {
+    productName: {
         type: String,
-        required
+        required: true
     },
-    description : {
+    skuBarcode: {
         type: String,
+        required: true,
+        unique: true
     },
-    quantity: {
+    stockQuantity: {
         type: Number,
         required: true
     },
     price: {
         type: Number,
         required: true
+    },
+    stockThreshold: {
+        type: Number,
+        required: true
+    },
+    category: {
+        type: String,
+        required: true
+    },
+    dateUpdated: {
+        type: Date,
+        default: Date.now
     }
-},{
+}, {
     timestamps: true,
     collection: "stock"
 })
 
-const Stock = mongoose.model("Stock", stock_schema)
+const stock_schema = mongoose.model("Stock", stockSchema)
 
-module.exports = { Stock }
+module.exports = { stock_schema }

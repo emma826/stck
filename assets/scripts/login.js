@@ -1,8 +1,8 @@
-const login_button = document.getElementById("login")
+const login_button = document.getElementById("login_button")
 const success = document.getElementById("success")
 const error = document.getElementById("error")
 
-register_button.addEventListener("click", async () => {
+login_button.addEventListener("click", async () => {
     const email = document.getElementById("email").value
     const password = document.getElementById("password").value
 

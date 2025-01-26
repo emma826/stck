@@ -32,8 +32,6 @@ router.post("/register", async (req, res) => {
 			const password_hash = await bcrypt.hash(password, 10)
 
 			const create_user = await user.create({ name, email, password: password_hash })
-
-			console.log(create_user)
 			const token = jwt.sign(create_user.id, process.env.SECRET_KEY)
 			
 			res.cookie("stck", token, {
