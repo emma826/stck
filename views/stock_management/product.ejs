@@ -93,7 +93,62 @@
                                 <h5 class="text-center">Stock History</h5>
                             </div>
                             <div class="card-body mt-0 pt-0">
-                                
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Date</th>
+                                                <th scope="col">Action</th>
+                                                <th scope="col">Quantity</th>
+                                                <th scope="col">Previous Quantity</th>
+                                                <th scope="col">Price</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% stockHistory.forEach(history => { %>
+                                                <tr>
+                                                    <td><%= new Date(history.date).toLocaleString() %></td>
+                                                    <td><%= history.action %></td>
+                                                    <td><%= history.quantity %></td>
+                                                    <td><%= history.previousQuantity %></td>
+                                                    <td><%= history.price %></td>
+                                                </tr>
+                                            <% }) %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card p-3 mt-4">
+                            <div class="card-header mb-0 pb-0">
+                                <h5 class="text-center">Order History</h5>
+                            </div>
+                            <div class="card-body mt-0 pt-0">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Date</th>
+                                                <th scope="col">Product Name</th>
+                                                <th scope="col">Quantity</th>
+                                                <th scope="col">Price</th>
+                                                <th scope="col">Total Amount</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% orderHistory.forEach(order => { %>
+                                                <tr>
+                                                    <td><%= new Date(order.date).toLocaleString() %></td>
+                                                    <td><%= order.productName %></td>
+                                                    <td><%= order.quantity %></td>
+                                                    <td><%= order.price %></td>
+                                                    <td><%= order.totalAmount %></td>
+                                                </tr>
+                                            <% }) %>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
