@@ -65,7 +65,7 @@ router.post("/add_stock", async (req, res) => {
     }
 });
 
-router.post("/update_stock", async (req, res) => {
+router.post("/update_stocks", async (req, res) => {
     const { id } = req.user;
     const { productId, quantity, price } = req.body;
 
@@ -212,6 +212,31 @@ router.get("/load_stocks", async (req, res) => {
             success: false,
             message: "Server Error, please try again later"
         });
+    }
+});
+
+router.get("/product/:id", async (req, res) => {
+    const { id } = req.user;
+    const { id: productId } = req.params;
+
+    if (!id) {
+        res.redirect("/login");
+        return;
+    }
+
+    try {
+        const stock = await stock_schema.findById(productId);
+        console.log(stock);
+
+        if (!stock) {
+            res.redirect("/stock_management");
+            return;
+        }
+
+        res.render("stock_management/product", { id, stock });
+    } catch (error) {
+        console.error(error);
+        res.redirect("/stock_management");
     }
 });
 
