@@ -4,6 +4,7 @@ const cookie_parser = require("cookie-parser")
 const jwt = require("jsonwebtoken")
 const env = require("dotenv").config()
 const user = require("../model/user_schema")
+const { stock_schema } = require("../model/stock_schema")
 
 router.use(cookie_parser())
 
@@ -28,7 +29,7 @@ async function get_user_details(req, res, next) {
                     name: find_user.name,
                     email: find_user.email,
                     public_key: find_user.public_key,
-                    private_key : find_user.private_key
+                    private_key: find_user.private_key
                 }
                 next()
             }
@@ -47,5 +48,24 @@ async function get_user_details(req, res, next) {
     }
 }
 
+const get_categories = async () => {
+    try {
+        const categories = await stock_schema.distinct("category");
+        return categories;
+    } catch (error) {
+        console.error("Error fetching categories:", error);
+        return [];
+    }
+}
 
-module.exports = { get_user_details }
+const get_stocks = async (user_id) => {
+    try {
+        const stocks = await stock_schema.find({ user_id });
+        return stocks;
+    } catch (error) {
+        console.error("Error fetching stocks:", error);
+        return null;
+    }
+}
+
+module.exports = { get_user_details, get_categories, get_stocks }

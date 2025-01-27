@@ -12,53 +12,109 @@
     <title>
         Stck | Automated Stock Taking App
     </title>
-    
+
     <link rel="stylesheet" type="text/css"
         href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700,900" />
-    
+
     <link href="/css/nucleo-icons.css" rel="stylesheet" />
     <link href="/css/nucleo-svg.css" rel="stylesheet" />
-    
+
     <link rel="stylesheet" href="../../../../cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
         integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer">
-   
+
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
-    
+
     <link id="pagestyle" href="/css/material-dashboard.mine63c.css" rel="stylesheet" />
-    
-  
 
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
 
     <%- include("./includes/sidebar.ejs") %>
-    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-        <%- include("./includes/navbar.ejs") %>
-       
-        <div class="container-fluid pt-3 pb-2">
-            
-            <div></div>
-        </div>
-    </main>
-    <!--   Core JS Files   -->
-    <script src="/js/core/popper.min.js"></script>
-    <script src="/js/core/bootstrap.min.js"></script>
-    <script src="/js/plugins/perfect-scrollbar.min.js"></script>
-    <script src="/js/plugins/smooth-scrollbar.min.js"></script>
+        <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+            <%- include("./includes/navbar.ejs") %>
 
-    
-    <script>
-        var win = navigator.platform.indexOf('Win') > -1;
-        if (win && document.querySelector('#sidenav-scrollbar')) {
-            var options = {
-                damping: '0.5'
+                <div class="container-fluid pt-3 pb-2">
+
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="card">
+                                <div class="card-body product_addition">
+                                    <div class="position-relative">
+
+                                        <div class="alert alert-danger error" style="display: none;"></div>
+                                        <div class="alert alert-success success" style="display: none;"></div>
+
+
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control border border-dark px-2" id="productName"
+                                                placeholder="Product Name">
+                                            <label for="productName">Product</label>
+                                        </div>
+
+                                        <div class="position-absolute w-100" style="z-index: 3; background-color: white; width: 100%;" id="related_query"></div>
+                                    </div>
+                                    <!-- <video id="scanner" width="100%" height="auto"></video> -->
+                                    <div class="form-floating mb-3">
+                                        <input type="number" min="1" class="form-control border border-dark px-2"
+                                            id="productQuantity" placeholder="Quantity">
+                                        <label for="productQuantity">Quantity</label>
+                                    </div>
+                                    <button type="submit" class="btn btn-success d-block w-50 py-3 mx-auto" id="add_product">Add Product</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-8">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Product</th>
+                                                    <th scope="col">Price (N)</th>
+                                                    <th scope="col">Quantity</th>
+                                                    <th scope="col">Amount (N)</th>
+                                                    <th scope="col"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="product_list">
+                                                
+                                                <tr></tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <button type="submit" class="btn btn-success d-block w-50 py-3 mx-auto" id="submit_stock">Submit Stock</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+        </main>
+        <!--   Core JS Files   -->
+        <script src="/js/core/popper.min.js"></script>
+        <script src="/js/core/bootstrap.min.js"></script>
+        <script src="/js/plugins/perfect-scrollbar.min.js"></script>
+        <script src="/js/plugins/smooth-scrollbar.min.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
+
+        <script defer src="/scripts/stock_buy.js"></script>
+
+
+        <script>
+            var win = navigator.platform.indexOf('Win') > -1;
+            if (win && document.querySelector('#sidenav-scrollbar')) {
+                var options = {
+                    damping: '0.5'
+                }
+                Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
             }
-            Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-        }
-    </script>
+        </script>
 </body>
 
 </html>

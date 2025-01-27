@@ -8,7 +8,7 @@ const cookie_parser = require("cookie-parser")
 const body_parser = require("body-parser")
 
 const auth = require("./routes/auth")
-const { get_user_details } = require("./routes/middleware")
+const { get_user_details, get_stocks } = require("./routes/middleware")
 const stock_managerment = require("./routes/stoc_management")
 
 mongoose.connect("mongodb://0.0.0.0:27017/stck")
@@ -20,7 +20,7 @@ app.use(body_parser.json())
 app.use("/auth", auth)
 app.use("/stock_management", stock_managerment)
 
-app.get("/", get_user_details, (req, res) => {
+app.get("/", get_user_details, async (req, res) => {
     const { id, name, email } = req.user
 
     if (!id) {
@@ -38,6 +38,25 @@ app.get("/login", (req, res) => {
 app.get("/register", (req, res) => {
     res.render("register")
 })
+
+app.get("/get_stocks", get_user_details, async (req, res) => {
+    const { id } = req.user
+
+    if (!id) {
+        return res.status(400).json({
+            success: false,
+            message: "Session not found, login to fix issue"
+        })
+    }
+
+    const stockList = await get_stocks(id)
+
+    return res.status(200).json({
+        stockList
+    })
+
+})
+
 app.get("/:url", get_user_details, (req, res) => {
     const { id, name, email } = req.user
     const url = req.params.url
